@@ -3,7 +3,10 @@ pipeline {
 	stages {
 		stage('Checkout SCM') {
 			steps {
-				git '/home/JenkinsDependencyCheckTest'
+				checkout([$class: 'GitSCM',
+                          branches: [[name: '*/master']],
+                          userRemoteConfigs: [[url: 'https://github.com/lcjj346/JenkinsDependencyCheckTest.git']]
+                ])
 			}
 		}
 
